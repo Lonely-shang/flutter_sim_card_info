@@ -1,15 +1,35 @@
 # sim_card_info
 
-get simCard information.
+Flutter SimCardInfo for Android API 23+.
+### Installation
 
-## Getting Started
+```
+flutter pub add sim_card_info
+or
+dart pub add sim_card_info
+```
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+# API
+### hasPermission
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+  bool permisson = await SimCardInfo.hasPermission;
+```
+
+### requestPermission
+```dart
+  await SimCardInfo.requestPermission;
+```
+
+### getSimCardInfo
+
+```dart
+  List<SimCard> simCardList = await SimCardInfo.getSimCardInfo;
+  if (!simCardList.isNotEmpty) {
+    TODO("Traverse simCardList to get sim card information")
+  } else {
+    TODO("No phone number on sim card")
+  }
+```
+
 

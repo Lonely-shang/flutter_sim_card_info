@@ -23,7 +23,15 @@ abstract class SimCardInfoPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  void requestPermission() {
+    throw UnimplementedError('requestPermission() has not been implemented.');
+  }
+
+  Future<bool> checkPermission() {
+    throw UnimplementedError('checkPermission() has not been implemented.');
+  }
+
+  Future<String> getSimCardInfo() {
+    throw UnimplementedError('getSimCardInfo() has not been implemented.');
   }
 }

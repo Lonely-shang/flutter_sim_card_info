@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:sim_card_info/data/SimCard.dart';
 import 'package:sim_card_info/sim_card_info.dart';
 
 void main() {
@@ -16,35 +17,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _simCardInfoPlugin = SimCardInfo();
+  SimCard? simCard1 = null;
+  SimCard? simCard2 = null;
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion =
-          await _simCardInfoPlugin.getPlatformVersion() ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
+    SimCardInfo.requestPermisson;
   }
 
   @override
@@ -55,9 +34,44 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("sim1Info:"),
+                  Text(simCard1!.phoneNumber)
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("sim2Info:"),
+                  Text(simCard2!.phoneNumber)
+                ],
+              ),
+              MaterialButton(onPressed: getSimCardInfo, child: const Text("click button get simCard")),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  void getSimCardInfo() async {
+    List<SimCard> cardList = await SimCardInfo.getSimCardInfo;
+    if (cardList.isNotEmpty) {
+      if (cardList.length == 2) {
+        setState(() {
+          simCard1 = cardList[0];
+          simCard2 = cardList[1];
+        });
+      } else {
+        setState(() {
+          simCard1 = cardList[0];
+        });
+      }
+    }
   }
 }

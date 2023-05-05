@@ -7,11 +7,16 @@ import 'sim_card_info_platform_interface.dart';
 class MethodChannelSimCardInfo extends SimCardInfoPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('sim_card_info');
+  final methodChannel = const MethodChannel('com.miliky/simCard_info');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  void requestPermission() async {
+    await methodChannel.invokeMethod('requestPermission');
   }
+
+  @override
+  Future<bool> checkPermission() async => await methodChannel.invokeMethod('checkPermission');
+
+  @override
+  Future<String> getSimCardInfo() async => await methodChannel.invokeMethod('getSimCardInfo');
 }

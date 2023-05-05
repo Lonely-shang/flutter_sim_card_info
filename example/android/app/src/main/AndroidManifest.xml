@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.miliky.sim_card_info_example">
+    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE"
+        android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" /> -->
+
    <application
         android:label="sim_card_info_example"
         android:name="${applicationName}"
