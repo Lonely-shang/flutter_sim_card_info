@@ -41,14 +41,14 @@ class _MyAppState extends State<MyApp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("sim1Info:"),
-                  Text(simCard1!.phoneNumber)
+                  Text("${simCard1?.phoneNumber}")
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("sim2Info:"),
-                  Text(simCard2!.phoneNumber)
+                  Text("${simCard2?.phoneNumber}")
                 ],
               ),
               MaterialButton(onPressed: getSimCardInfo, child: const Text("click button get simCard")),
