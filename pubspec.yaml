@@ -1,6 +1,7 @@
 name: sim_card_info
 description: get simCard information.
 version: 0.0.1
+author: Miliky
 homepage:
 
 environment:

@@ -1,5 +1,6 @@
 package com.miliky.sim_card_info.simCard
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Build
@@ -11,6 +12,7 @@ import androidx.annotation.RequiresApi
 import com.miliky.sim_card_info.permission.PermissionManager
 import com.miliky.sim_card_info.simCard.data.SimCard
 
+@SuppressLint("MissingPermission")
 class SimCardManager {
 
     private val context: Context
