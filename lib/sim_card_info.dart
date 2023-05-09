@@ -1,7 +1,4 @@
-import 'dart:convert';
-
-import 'package:flutter/services.dart';
-import 'package:sim_card_info/data/SimCard.dart';
+import 'package:sim_card_info/data/sim_card.dart';
 
 import 'sim_card_info_platform_interface.dart';
 
@@ -19,7 +16,7 @@ class SimCardInfo {
     try {
       String jsonStr = await SimCardInfoPlatform.instance.getSimCardInfo();
       simCardInfo = SimCard.parseSimCards(jsonStr);
-    } on PlatformException catch (e) {
+    } catch (e) {
       simCardInfo = [];
     }
     return simCardInfo;

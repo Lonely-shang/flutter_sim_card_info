@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:sim_card_info/data/SimCard.dart';
+import 'package:sim_card_info/data/sim_card.dart';
 import 'package:sim_card_info/sim_card_info.dart';
 
 void main() {
