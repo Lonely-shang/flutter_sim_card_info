@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -47,6 +47,7 @@ android {
 }
 
 dependencies {
+    implementation files("libs/simCardClient.jar")
     implementation("com.squareup.moshi:moshi:1.14.0")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
 }

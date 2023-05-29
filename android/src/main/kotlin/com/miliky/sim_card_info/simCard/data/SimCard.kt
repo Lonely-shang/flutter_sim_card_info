@@ -4,21 +4,20 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.telephony.SubscriptionInfo
 import android.telephony.TelephonyManager
-import androidx.annotation.RequiresApi
 import com.squareup.moshi.JsonClass
 import org.json.JSONException
 import org.json.JSONObject
 
 
+@Suppress("DEPRECATION")
 @JsonClass(generateAdapter = true)
 class SimCard() {
     var slotIndex: Int = 0
     var carrierName: String = ""
     var displayName: String = ""
-   var phoneNumber: String = ""
+    var phoneNumber: String = ""
     var countryPhonePrefix: String = "86"
 
-   @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
    constructor (subscriptionInfo: SubscriptionInfo) : this() {
        this.carrierName = subscriptionInfo.carrierName.toString()
        this.displayName = subscriptionInfo.displayName.toString()
@@ -26,6 +25,7 @@ class SimCard() {
        this.phoneNumber = _delPhoneNumberPrefix(subscriptionInfo.number)
    }
 
+   @SuppressLint("MissingPermission")
    constructor (telephonyManager: TelephonyManager) : this() {
        if (telephonyManager.simOperator != null)
            carrierName = telephonyManager.simOperatorName

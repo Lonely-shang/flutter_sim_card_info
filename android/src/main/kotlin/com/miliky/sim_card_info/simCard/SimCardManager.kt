@@ -8,7 +8,6 @@ import android.os.IBinder
 import android.telephony.SubscriptionInfo
 import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
-import androidx.annotation.RequiresApi
 import com.miliky.sim_card_info.permission.PermissionManager
 import com.miliky.sim_card_info.simCard.data.SimCard
 
@@ -58,7 +57,6 @@ class SimCardManager {
         return simCardList
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     private fun getSubscriptions () : List<SubscriptionInfo> {
         val subscriptionManager: SubscriptionManager = context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE) as SubscriptionManager ?: return arrayListOf()
         val subPermission : Boolean = permissionManager.subscriptionsPremission(activity)

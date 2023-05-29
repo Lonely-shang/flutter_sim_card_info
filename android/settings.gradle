@@ -1,1 +1,3 @@
 rootProject.name = 'sim_card_info'
+include ':simCardInfo'
+include ':buildUtils'
